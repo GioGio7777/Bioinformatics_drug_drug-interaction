@@ -10,7 +10,7 @@ class GCN(nn.Module):
         self.conv1 = GCNConv(in_channels, 128)
         self.conv2 = GCNConv(128, 64)
         self.conv3 = GCNConv(64, 32)
-        self.classifer = nn.Linear(32, out_channels)
+        self.classifier = nn.Linear(32, out_channels)
 
     def forward(self, x, edge_index):
         h = self.conv1(x, edge_index)

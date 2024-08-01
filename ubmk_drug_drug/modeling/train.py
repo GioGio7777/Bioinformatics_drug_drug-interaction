@@ -35,7 +35,7 @@ def train(model, optimizer, data, loss):
 def main(
         # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
         input_path: Path = PROCESSED_DATA_DIR / "drug_drug_without_name.csv",
-        model_path: Path = MODELS_DIR / "model.pt"
+        model_path: Path = MODELS_DIR / "model_mac.pt"
         # -----------------------------------------
 ):
     logger.info(f"torch version: {torch.__version__}")
@@ -65,7 +65,7 @@ def main(
         z = model.encode(data.x, data.edge_index)
         logger.info(f"Node Embeddings: {z} ")
 
-    torch.save(model, model_path)
+    torch.save(model,model_path)
 
 
 if __name__ == "__main__":
