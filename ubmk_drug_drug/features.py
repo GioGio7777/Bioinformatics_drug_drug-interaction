@@ -2,7 +2,6 @@ import pandas
 import torch
 import typer
 from torch_geometric.data import Data
-from tqdm import tqdm
 
 import numpy as np
 
@@ -11,8 +10,9 @@ app = typer.Typer()
 
 def toAdjencyMatrix(df):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
     num_of_row = df.shape[0]
-    num_of_column = df.shape[1] - 1
+    num_of_column = df.shape[1]
 
     adj_matrix = np.zeros((num_of_row, num_of_column))
 
@@ -32,3 +32,5 @@ def toAdjencyMatrix(df):
     data = Data(x=data_x, edge_index=edge_index).to(device)
 
     return data
+
+

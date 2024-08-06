@@ -13,8 +13,8 @@ app = typer.Typer()
 def mat_drug_drug_wo_names(input_path, output_path):
     input_path = str(Path(input_path))
     output_path = str(Path(output_path))
-    dr_dr = pd.read_csv(input_path + "/mat_drug_drug.txt", sep=" ", header=None)
-    dr_dr.to_csv(str(output_path + "/drug_drug_without_name.csv"))
+    dr_dr = pd.read_csv(input_path + "/mat_drug_drug.txt", header=None,delim_whitespace=True)
+    dr_dr.to_csv(str(output_path + "/drug_drug_without_name.csv"), index=False)
 
     return logger.success("Dataset Processed and Saved in" + output_path)
 

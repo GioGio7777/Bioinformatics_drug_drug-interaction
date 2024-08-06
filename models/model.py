@@ -20,6 +20,6 @@ class GCN(nn.Module):
         h = self.conv3(h, edge_index)
         h = h.tanh()
 
-        out = self.classifer(h)
+        out = self.classifier(h)
 
         return out, h

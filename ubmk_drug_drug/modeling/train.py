@@ -50,12 +50,12 @@ def main(
     model = GAE(m)
     model = model.to(device)
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-    loss = torch.nn.CrossEntropyLoss()
+    optimizer = torch.optim.RMSprop(model.parameters(), lr=0.001)
+    loss = torch.nn.BCELoss()
 
     data = load_data(input_path)
 
-    for epoch in tqdm(range(500), desc="Training Progress"):
+    for epoch in tqdm(range(2500), desc="Training Progress"):
         loss = train(model, optimizer, data, loss)
         if epoch % 10 == 0:
             logger.success(f'Epoch {epoch}, Loss: {loss}', style="braces")
